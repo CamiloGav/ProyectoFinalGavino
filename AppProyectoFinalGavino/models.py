@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth.models import User
 
 class Publicacion(models.Model):
-
     imagen = models.ImageField(upload_to='nombredecarpeta', null=True, blank=True) #crear media y ""
     titulo = models.CharField(max_length=100, help_text='Ingresa el título')
     descripcion = models.CharField(max_length=300, help_text='Ingresa una breve descripción')
@@ -21,3 +20,9 @@ class Autor(models.Model):
 class Avatar(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     imagen = models.ImageField(upload_to='avatares', null=True, blank=True)
+
+class Contacto(models.Model):
+    nombre = models.CharField(max_length=40)
+    email = models.EmailField()
+    celular = models.CharField(max_length=20)
+    descripcion = models.CharField(max_length=300, help_text='Ingresa una breve descripción')

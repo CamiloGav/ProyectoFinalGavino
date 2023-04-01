@@ -55,7 +55,7 @@ ROOT_URLCONF = 'ProyectoFinalGavino.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['C:/Users/camyg/Desktop/CoderHouse/Python/django/EntregaFinal/ProyectoFinalGavino/ProyectoFinalGavino/plantillas'],
+        'DIRS': ['C:/Users/camyg/Desktop/CoderHouse/Python/ProyectoFinalGavino/ProyectoFinalGavino/plantillas/template1.html'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

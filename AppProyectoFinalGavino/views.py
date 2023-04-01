@@ -9,6 +9,9 @@ from AppProyectoFinalGavino.models import Autor
 def inicio(request):
     return render(request, 'inicio.html')
 
+def about(request):
+    return render(request, 'about.html')
+
 def autor(self):
     autor = Autor(nombre="Pedro", apellido="Gaviño", genero="Fantasía")
     autor.save()
