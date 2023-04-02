@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block contentChange %}
+{% block descripcion %}
 
 <!-- Va el contenido que vamos a cambiar -->
 <header class="masthead" style="background-image: url('../static/AppProyectoFinalGavino/assets/img/home-bg.jpg')">
@@ -25,21 +25,28 @@
             <!-- Divider-->
             <hr class="my-4" />
             <!-- Contenido que cambia. -->
+
+            {% for p in posteo %}
+
+            <li style="list-style: none;">
+                <!-- Post preview-->
+                <div class="post-preview">
+                    <a href="post.html"><h2>{{ p.titulo }} <div class="post-preview"><p class="post-meta">( de {{ p.autor }})</p></div></h2>
+                        <h3 class="post-subtitle">{{ p.descripcion}}</h3>
+                    </a>
+                    <p class="post-meta">
+                        Posted by
+                        <a href="#!">{{p.user}}</a>
+                        on {{ p.fechaPublicacion}}
+                    </p>
+                </div>
+                <!-- Divider-->
+                <hr class="my-4" />
+                
+            </li>
+    
+            {% endfor %}
             
-            <!-- Post preview-->
-            <div class="post-preview">
-                <a href="post.html">
-                    <h2 class="post-title">Man must explore, and this is exploration at its greatest</h2>
-                    <h3 class="post-subtitle">Problems look mighty small from 150 miles up</h3>
-                </a>
-                <p class="post-meta">
-                    Posted by
-                    <a href="#!">Start Bootstrap</a>
-                    on September 24, 2023
-                </p>
-            </div>
-            <!-- Divider-->
-            <hr class="my-4" />
             <!-- Pager-->
             <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Ingresa tu publicación →</a></div>
         </div>

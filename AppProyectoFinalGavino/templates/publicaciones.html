@@ -2,11 +2,16 @@
 
 {% load static %}
 
-{% block contentChange %}
+{% block descripcion %}
 
 <!-- Va el contenido que vamos a cambiar -->
-<h1>Este es el título del Inicio que cambio</h1>
-    <p>Se ha heredado todo desde la plantilla padre</p>
-    <h3>En el hijo, inicio.html, casí no hay nada :)</h3>
+<div class="post-preview">
+    <a href="post.html"><h2 class="post-title">{{}}</h2></a>
+    <p class="post-meta">
+        Posted by
+        <a href="#!">Start Bootstrap</a>
+        on September 18, 2023
+    </p>
+</div>
 
 {% endblock %}

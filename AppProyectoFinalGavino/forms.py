@@ -6,7 +6,10 @@ class AutorFormulario(forms.Form):
     genero = forms.CharField()
 
 class ContactoFormulario(forms.Form):
-    nombre = forms.CharField()
+    nombre = forms.CharField(max_length=30)
     email = forms.EmailField()
-    celular = forms.CharField()
-    descripcion = forms.CharField()
+    celular = forms.IntegerField()
+    descripcion = forms.CharField(max_length=30)
+
+class NewsletterFormulario(forms.Form):
+    email = forms.EmailField()

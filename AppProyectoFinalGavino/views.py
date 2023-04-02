@@ -1,8 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import Template, Context
-from AppProyectoFinalGavino.models import Autor
-from AppProyectoFinalGavino.forms import AutorFormulario, ContactoFormulario
+from AppProyectoFinalGavino.models import *
+from AppProyectoFinalGavino.forms import *
 
 
 # Create your views here.
@@ -13,8 +13,11 @@ def inicio(request):
 def about(request):
     return render(request, 'about.html')
 
-def contacto(request):
-    return render(request, 'contacto.html')
+# def contacto(request):
+#     return render(request, 'contacto.html')
+
+# def newsletter(request):
+#     return render(request, 'newsletter.html')
 
 def autor(self):
     autor = Autor(nombre="Pedro", apellido="Gaviño", genero="Fantasía")
@@ -39,7 +42,23 @@ def autorFormulario(request):
         miFormulario = AutorFormulario()
     return render (request, 'autorFormulario.html', {'miFormulario': miFormulario})
 
-def contactoFormulario(request):
+def newsletter(request):
+    if request.method == 'POST':
+        miFormulario = NewsletterFormulario(request.POST)
+
+        if miFormulario.is_valid():
+            informacion = miFormulario.cleaned_data
+
+            newsletter = Newsletter(email=informacion['email'])
+            newsletter.save()
+
+            return render(request, 'inicio.html')
+    
+    else:
+        miFormulario = NewsletterFormulario()
+    return render (request, 'newsletter.html', {'miFormulario': miFormulario})
+
+def contacto(request):
     if request.method == 'POST':
         miFormulario = ContactoFormulario(request.POST)
 
@@ -47,10 +66,42 @@ def contactoFormulario(request):
             informacion = miFormulario.cleaned_data
 
 
-            contacto = ContactoFormulario(nombre=informacion['nombre'], email=informacion['email'], celular=informacion['celular'], descripcion=informacion['descripcion'])
+            contacto = Contacto(nombre=informacion['nombre'], email=informacion['email'], celular=informacion['celular'], descripcion=informacion['descripcion'])
             contacto.save()
 
             return render(request, 'inicio.html')
     else:
         miFormulario = ContactoFormulario()
-    return render (request, 'contactoFormulario.html', {'miFormulario': miFormulario})
+    return render(request, 'contacto.html', {'miFormulario': miFormulario})
+
+
+# def publicacion(request):
+#     posteo = Posteo.objects.all()
+#     contexto = {'posteo':posteo}
+
+#     return render(request, 'inicio.html', contexto)
+
+def busquedaAutor(request):
+    return render(request, 'busquedaAutor.html')
+
+def buscar(request):
+    if request.GET['genero']:
+        genero = request.GET['genero']
+        autor = Autor.objects.filter(genero__icontains=genero)
+
+        return render(request, 'resultadoBusqueda.html', {"autor": autor, "genero": genero})
+    
+    else:
+
+        respuesta = f'No enviaste datos de busqueda'
+
+    return HttpResponse(respuesta)
+
+def leerPosteo(request):
+    posteo = Posteo.objects.all()
+
+    contexto = {"posteo": posteo}
+
+    return render(request, "inicio.html", contexto)
+
+

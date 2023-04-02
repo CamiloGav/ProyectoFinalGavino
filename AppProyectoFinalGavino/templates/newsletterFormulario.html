@@ -10,7 +10,7 @@
     {% if miFormulario.errors %}
     <p style="color:red" >Están mal los datos, revisar por favor.</p>
     {% endif %}
-    <form action="contactoFormulario" method="POST">{% csrf_token %}
+    <form action="newsletterFormulario" method="POST">{% csrf_token %}
 
         <table>
             {{ miFormulario.as_table }}

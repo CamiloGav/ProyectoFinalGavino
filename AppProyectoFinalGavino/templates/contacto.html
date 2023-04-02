@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% block contentChange %}
+{% block descripcion %}
 <!-- Page Header-->
 <header class="masthead" style="background-image: url('static/AppProyectoFinalGavino/assets/img/contact-bg.jpg')">
     <div class="container position-relative px-4 px-lg-5">
@@ -16,6 +16,18 @@
         </div>
     </div>
 </header>
+<!-- Ingreso el formulario aquí -->
+    {% if miFormulario.errors %}
+        <p style="color:red" >Están mal los datos, revisar por favor.</p>
+        {% endif %}
+        <form action="" method="POST">{% csrf_token %}
+
+            <table>
+                {{ miFormulario.as_table }}
+            </table>
+
+            <input type = "submit" value="Enviar">
+        </form>
 <!-- Main Content-->
 <main class="mb-4">
     <div class="container px-4 px-lg-5">
