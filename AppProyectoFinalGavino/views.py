@@ -26,6 +26,24 @@ def autor(self):
 
     return HttpResponse(muestraDeTexto)
 
+def posteoFormulario(request):
+    if request.method == 'POST':
+        miFormulario = PosteoFormulario(request.POST)
+
+
+        if miFormulario.is_valid():
+            informacion = miFormulario.cleaned_data
+
+            posteo = Posteo(imagen=informacion['imagen'], titulo=informacion['titulo'], descripcion=informacion['descripcion'],autor=informacion['autor'], profesion=informacion['profesion'], fechaPublicacion=informacion['fechaPublicacion'])
+            posteo.save()
+
+            return render(request, 'inicio.html')
+        else:
+            miFormulario = PosteoFormulario()
+        return render (request, 'posteoFormulario.html', {'miFormulario': miFormulario})
+
+
+
 def autorFormulario(request):
     if request.method == 'POST':
         miFormulario = AutorFormulario(request.POST)
@@ -104,4 +122,42 @@ def leerPosteo(request):
 
     return render(request, "inicio.html", contexto)
 
+def eliminarAutor(request, autor_nombre):
+    try:
+        autor = Autor.objects.get(nombre=autor_nombre)
+    except Autor.MultipleObjectsReturned:
+        autor = Autor.objects.filter(nombre=autor_nombre)[0]
+    autor.delete()
+
+    autores = Autor.objects.all()
+    contexto = {"autores":autores}
+    return render(request, "leerAutor.html", contexto)
+
+def leerAutor(request):
+    autores = Autor.objects.all()
+
+    contexto = {"autores": autores}
+
+    return render(request, "leerAutor.html", contexto)
+
+
+def editarAutor(request, autor_nombre):
+    autor = Autor.objects.get(nombre=autor_nombre)
+    if request.method == 'POST':
+        miFormulario = AutorFormulario(request.POST)
+        print(miFormulario)
+
+        if miFormulario.is_valid():
+            informacion = miFormulario.cleaned_data
+
+            autor.nombre = informacion['nombre']
+            autor.apellido = informacion['apellido']
+            autor.genero = informacion['genero']
+
+            autor.save()
+            return render(request, "inicio.html")
+    else:
+        miFormulario = AutorFormulario(initial={'nombre':autor.nombre,'apellido':autor.apellido,'genero':autor.genero})
+
+        return render(request, "editarAutor.html", {"miFormulario":miFormulario, "autor_nombre":autor_nombre})
 

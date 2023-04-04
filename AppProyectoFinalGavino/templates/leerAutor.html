@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leer Autores</title>
+</head>
+<body>
+    {% for p in autores %}
+        <li>{{p}}</li>
+        <button> 
+            <a href="{% url 'EliminarAutor' p.nombre %}">Eliminar</a>
+        </button>
+        <button>
+            <a href="{% url 'EditarAutor' p.nombre %}">Editar</a>
+        </button>
+    {% endfor %}
+    </br>
+    <a href="autorFormulario">Agregar otro Autor</a>
+</body>
+</html>

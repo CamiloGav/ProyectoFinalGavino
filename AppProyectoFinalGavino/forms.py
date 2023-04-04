@@ -13,3 +13,11 @@ class ContactoFormulario(forms.Form):
 
 class NewsletterFormulario(forms.Form):
     email = forms.EmailField()
+
+# class PosteoFormulario(forms.Form):
+#     # imagen = forms.ImageField(upload_to='nombredecarpeta', null=True, blank=True) #crear media y ""
+#     titulo = forms.CharField(max_length=100, help_text='Ingresa el título')
+#     descripcion = forms.Textarea(max_length=300, help_text='Ingresa una breve descripción')
+#     autor = forms.CharField(max_length=40)
+#     profesion = forms.CharField(max_length=40)
+#     fechaPublicacion = forms.DateField()
