@@ -4,21 +4,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posteo Formualario</title>
+    <title>Editar Perfil</title>
 </head>
 <body>
-    {% if miFormulario.erros %}
-    <p style="color:red" >Están mal los datos, revisar por favor.</p>
-    {% endif %}
+    <!--Aquí va lo que cambia, y lo asociado a está vista :) -->
+    <h1>Formulario - Editar Perfil</h1>
+    <h1>De {{usuario}}</h1>
+    
+
     <form action="" method="POST">{% csrf_token %}
 
+        <!-- Acá está la magia de Django-->
+        
         <table>
+
             {{ miFormulario.as_table }}
+
         </table>
 
-        <input type = "submit" value="Enviar">
-        <button ><a href="{% url 'LeerPosteo' %}">Volver</a></button>
-    </form>
+        <input type="submit", value="Enviar">
 
+    </form> 
 </body>
 </html>

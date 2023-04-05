@@ -1,18 +1,20 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
+#user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posteo')
+
 class Posteo(models.Model):
 
-    imagen = models.ImageField(upload_to='nombredecarpeta', null=True, blank=True) #crear media y ""
     titulo = models.CharField(max_length=100, help_text='Ingresa el título')
     descripcion = models.TextField(max_length=300, help_text='Ingresa una breve descripción')
     autor = models.CharField(max_length=40)
     profesion = models.CharField(max_length=40)
     fechaPublicacion = models.DateField()
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posteo')
 
     def __str__(self):
         return f'{self.titulo} de {self.autor}'
+
     
 class Autor(models.Model):
     nombre = models.CharField(max_length=40, help_text='Ingresa el nombre')

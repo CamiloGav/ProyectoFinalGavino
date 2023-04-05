@@ -10,13 +10,14 @@
     {% if miFormulario.erros %}
     <p style="color:red" >Están mal los datos, revisar por favor.</p>
     {% endif %}
-    <form action="autorFormulario" method="POST">{% csrf_token %}
+    <form href="" method="POST">{% csrf_token %}
 
         <table>
             {{ miFormulario.as_table }}
         </table>
 
         <input type = "submit" value="Enviar">
+        <button ><a href="{% url 'LeerPosteo' %}">Volver</a></button>
     </form>
 
 </body>

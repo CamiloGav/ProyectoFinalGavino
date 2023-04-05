@@ -9,14 +9,16 @@
 <body>
     {% for p in autores %}
         <li>{{p}}</li>
-        <button> 
-            <a href="{% url 'EliminarAutor' p.nombre %}">Eliminar</a>
+        <button>
+            <a href="{% url 'Delete' p.id %}">Borrar</a>
         </button>
         <button>
             <a href="{% url 'EditarAutor' p.nombre %}">Editar</a>
         </button>
     {% endfor %}
     </br>
-    <a href="autorFormulario">Agregar otro Autor</a>
+    </br>
+    </br>
+    <a href="autorFormulario">Agregar otro Autor</a> <button ><a href="{% url 'LeerPosteo' %}">Volver</a></button>
 </body>
 </html>

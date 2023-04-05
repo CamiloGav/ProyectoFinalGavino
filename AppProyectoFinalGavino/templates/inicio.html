@@ -48,7 +48,9 @@
             {% endfor %}
             
             <!-- Pager-->
-            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Ingresa tu publicación →</a></div>
+            {% if request.user.is_authenticated %}
+            <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="posteoFormulario">Ingresa tu publicación →</a></div>
+            {% endif %}
         </div>
     </div>
 </div>
