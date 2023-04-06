@@ -219,7 +219,7 @@ def editarAutor(request, autor_nombre):
             autor.genero = informacion['genero']
 
             autor.save()
-            return render(request, "inicio.html")
+            return render(request, "leerAutor.html")
     else:
         miFormulario = AutorFormulario(initial={'nombre':autor.nombre,'apellido':autor.apellido,'genero':autor.genero})
 
