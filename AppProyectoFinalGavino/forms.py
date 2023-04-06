@@ -11,7 +11,7 @@ class ContactoFormulario(forms.Form):
     nombre = forms.CharField(max_length=30)
     email = forms.EmailField()
     celular = forms.IntegerField()
-    mensaje = forms.CharField(max_length=30)
+    mensaje = forms.CharField(max_length=300)
 
 class NewsletterFormulario(forms.Form):
     email = forms.EmailField()
