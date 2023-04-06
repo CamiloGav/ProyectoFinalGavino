@@ -94,7 +94,7 @@ def posteoFormulario(request):
         if miFormulario.is_valid():
             informacion = miFormulario.cleaned_data
 
-            posteo = Posteo(titulo=informacion['titulo'], descripcion=informacion['descripcion'],autor=informacion['autor'], profesion=informacion['profesion'], fechaPublicacion=informacion['fechaPublicacion'])
+            posteo = Posteo(titulo=informacion['titulo'], descripcion=informacion['descripcion'],autor=informacion['autor'], genero=informacion['genero'], fechaPublicacion=informacion['fechaPublicacion'])
             posteo.save()
 
             return render(request, 'inicio.html')
