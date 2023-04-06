@@ -9,7 +9,7 @@ class Posteo(models.Model):
     titulo = models.CharField(max_length=100, help_text='Ingresa el título')
     descripcion = models.TextField(max_length=300, help_text='Ingresa una breve descripción')
     autor = models.CharField(max_length=40)
-    profesion = models.CharField(max_length=40)
+    genero = models.CharField(max_length=40)
     fechaPublicacion = models.DateField()
 
     def __str__(self):
@@ -32,10 +32,10 @@ class Contacto(models.Model):
     nombre = models.CharField(max_length=40)
     email = models.EmailField()
     celular = models.IntegerField()
-    descripcion = models.TextField(max_length=300, help_text='Ingresa una breve descripción')
+    mensaje = models.TextField(max_length=300, help_text='Ingresa una breve descripción')
 
     def __str__(self):
-        return f'{self.nombre}: {self.descripcion[0:50]}...'
+        return f'De {self.nombre}: {self.mensaje[0:50]}...'
 
 class Newsletter(models.Model):
     email = models.EmailField()

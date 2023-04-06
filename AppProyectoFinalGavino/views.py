@@ -68,9 +68,7 @@ def login_request(request):
     form = AuthenticationForm()
     return render(request, "login.html", {"form":form})
 
-    
-def inicio(request):
-    return render(request, 'inicio.html')
+
 
 def about(request):
     return render(request, 'about.html')
@@ -146,7 +144,7 @@ def contacto(request):
             informacion = miFormulario.cleaned_data
 
 
-            contacto = Contacto(nombre=informacion['nombre'], email=informacion['email'], celular=informacion['celular'], descripcion=informacion['descripcion'])
+            contacto = Contacto(nombre=informacion['nombre'], email=informacion['email'], celular=informacion['celular'], mensaje=informacion['mensaje'])
             contacto.save()
 
             return render(request, 'inicio.html')
@@ -179,10 +177,13 @@ def buscar(request):
 
 def leerPosteo(request):
     posteo = Posteo.objects.all()
-
     contexto = {"posteo": posteo}
-
     return render(request, "inicio.html", contexto)
+
+def fotoAvatar(request):
+    avatares = Avatar.objects.filter(user=request.user.id)
+    print(avatares[0].imagen.url)
+    return render(request, 'fotoAvatar.html', {'url':avatares[0].imagen.url})
 
 def eliminarAutor(request, autor_nombre):
     try:
@@ -194,6 +195,7 @@ def eliminarAutor(request, autor_nombre):
     autores = Autor.objects.all()
     contexto = {"autores":autores}
     return render(request, "leerAutor.html", contexto)
+
 
 def leerAutor(request):
     autores = Autor.objects.all()
@@ -227,3 +229,18 @@ class AutorDelete(DeleteView):
     model = Autor
     template_name = "autor_confirm_delete.html"
     success_url = "/AppProyectoFinalGavino/leerAutor"
+
+@login_required
+def agregarAvatar(request):
+    if request.method =='POST':
+        miFormulario = AvatarFormulario(request.POST, request.FILES)
+        if miFormulario.is_valid():
+            u =  User.objects.get(username=request.user)
+            avatar = Avatar(user=u, imagen=miFormulario.cleaned_data['imagen'])
+            avatar.save()
+
+            return render(request, 'inicio.html')
+    else:
+        miFormulario = AvatarFormulario()
+    return render(request, 'agregarAvatar.html', {'miFormulario':miFormulario})
+

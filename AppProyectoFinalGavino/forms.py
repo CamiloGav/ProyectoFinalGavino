@@ -11,7 +11,7 @@ class ContactoFormulario(forms.Form):
     nombre = forms.CharField(max_length=30)
     email = forms.EmailField()
     celular = forms.IntegerField()
-    descripcion = forms.CharField(max_length=30)
+    mensaje = forms.CharField(max_length=30)
 
 class NewsletterFormulario(forms.Form):
     email = forms.EmailField()
@@ -21,7 +21,7 @@ class PosteoFormulario(forms.Form):
     titulo = forms.CharField(max_length=100, help_text='Ingresa el título')
     descripcion = forms.CharField(max_length=300, help_text='Ingresa una descripción')
     autor = forms.CharField(max_length=40)
-    profesion = forms.CharField(max_length=40)
+    genero = forms.CharField(max_length=40)
     fechaPublicacion = forms.DateField()
 
 class UserRegisterForm(UserCreationForm):

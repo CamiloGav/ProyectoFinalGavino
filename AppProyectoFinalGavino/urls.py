@@ -3,8 +3,9 @@ from AppProyectoFinalGavino import views
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
-    #path('', views.inicio, name='Inicio'),
+    #path('inicio', views.inicio, name='Inicio'),
     path('autor', views.autor, name='Autor'),
+    path('fotoAvatar', views.fotoAvatar, name='fotoAvatar'),
     path('about', views.about, name='About'),
     path('contacto', views.contacto, name='Contacto'),
     path('newsletter', views.newsletter, name='Newsletter'),
@@ -23,4 +24,5 @@ urlpatterns = [
     path('registro', views.register, name='Register'),
     path('logout', LogoutView.as_view(template_name='logout.html'), name='Logout'),
     path('editarPerfil', views.editarPerfil, name='EditarPerfil'),
+    path('agregarAvatar', views.agregarAvatar, name='AgregarAvatar'),
 ]
