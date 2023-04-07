@@ -26,4 +26,7 @@ Finalmente para comenzar debemos ingregar en la url de nuestro navegador `http:/
 
 >### Video explicativo
 
-[[youtube-{16by9}-{https://www.youtube.com/watch?v=P-5pUQLTllE}]] 
+
+
+https://user-images.githubusercontent.com/57568125/230521241-fe98c943-94a7-45da-8f7c-e9f5f3457ba2.mp4
+
