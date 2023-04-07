@@ -21,6 +21,9 @@ Una vez copiado el repositorio, ingresamos a la carpeta con el comando `cd .\Pro
 
 Finalmente para comenzar debemos ingregar en la url de nuestro navegador `http://127.0.0.1:8000/AppProyectoFinalGavino/` o `http://127.0.0.1:8000/admin/`, para ingresar al perfil admin.
 
+Usuario: cgavino   Contraseña:   python23
+
+
 
 
 
